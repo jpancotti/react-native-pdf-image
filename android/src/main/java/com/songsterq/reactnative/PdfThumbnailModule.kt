@@ -87,8 +87,8 @@ class PdfThumbnailModule(reactContext: ReactApplicationContext) : ReactContextBa
 
   private fun renderPage(pdfRenderer: PdfRenderer, page: Int, filePath: String, quality: Int): WritableNativeMap {
     val currentPage = pdfRenderer.openPage(page)
-    val width = currentPage.width
-    val height = currentPage.height
+    val width = currentPage.width * 2
+    val height = currentPage.height * 2
     val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     currentPage.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
     currentPage.close()
