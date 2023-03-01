@@ -27,7 +27,7 @@ class PdfThumbnail: NSObject {
 
     func generatePage(pdfPage: PDFPage, filePath: String, page: Int, quality: Int) -> Dictionary<String, Any>? {
         let pageRect = pdfPage.bounds(for: .mediaBox)
-        let image = pdfPage.thumbnail(of: CGSize(width: pageRect.width, height: pageRect.height), for: .mediaBox)
+        let image = pdfPage.thumbnail(of: CGSize(width: pageRect.width * 2, height: pageRect.height * 2), for: .mediaBox)
         let outputFile = getCachesDirectory().appendingPathComponent(getOutputFilename(filePath: filePath, page: page))
         guard let data = image.jpegData(compressionQuality: CGFloat(quality) / 100) else {
             return nil
